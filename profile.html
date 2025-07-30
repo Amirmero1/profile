@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir Tharwat | Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom vibrant colors */
+        :root {
+            --primary: #ff2e63;
+            --secondary: #00f7ff;
+            --accent: #f9a825;
+            --background: #1a1a2e;
+            --card-bg: #16213e;
+        }
+
+        /* Animation for fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Glowing effect for profile image */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--secondary), 0 0 20px var(--secondary), 0 0 30px var(--secondary); }
+            50% { box-shadow: 0 0 20px var(--secondary), 0 0 40px var(--secondary), 0 0 60px var(--secondary); }
+            100% { box-shadow: 0 0 5px var(--secondary), 0 0 20px var(--secondary), 0 0 30px var(--secondary); }
+        }
+
+        .profile-img {
+            border-radius: 50%;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Underline effect */
+        .underline-effect {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline-effect::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .underline-effect:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-[var(--background)] text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-[var(--card-bg)] shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold text-[var(--primary)]">AT</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-[var(--secondary)] transition underline-effect">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-[var(--secondary)] transition underline-effect">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-[var(--secondary)] transition underline-effect">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-[var(--secondary)] transition underline-effect">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-300 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--card-bg)] shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-[var(--secondary)]">About</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-[var(--secondary)]">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-[var(--secondary)]">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-[var(--secondary)]">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Hi, I'm <span class="text-[var(--accent)]">Amir Tharwat</span></h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-200 mb-6">Full Stack .NET Developer</h2>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] px-6 py-3 rounded-lg font-medium transition">Get In Touch</a>
+                        <a href="#projects" class="border border-[var(--secondary)] text-[var(--secondary)] hover:bg-[var(--card-bg)] px-6 py-3 rounded-lg font-medium transition">View Work</a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2 animate-fade-in delay-100">
+                    <div class="relative max-w-md mx-auto">
+                        <img src="p.jpg" alt="Amir Tharwat" class="w-64 h-64 object-cover mx-auto profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-[var(--card-bg)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">About <span class="text-[var(--primary)]">Me</span></h2>
+            <div class="md:flex items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 animate-fade-in delay-100">
+                    <img src="p.jpg" alt="Amir Tharwat" class="w-64 h-64 object-cover rounded-full mx-auto profile-img">
+                </div>
+                <div class="md:w-2/3 md:pl-12 animate-fade-in delay-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-[var(--secondary)]">Who I Am</h3>
+                    <p class="text-gray-300 mb-4">I'm a passionate programmer specializing in front-end development with HTML, CSS, and back-end development with C#. I love creating intuitive, responsive, and performant user interfaces that provide meaningful experiences to users.</p>
+                    <p class="text-gray-300 mb-6">With a background in computer science and design, I bridge the gap between engineering and aesthetics to build products that are both technically robust and visually appealing.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Education</h4>
+                                <p class="text-gray-300">Bachelor's in Mathematics and Computer Science<br>Menoufia University, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Location</h4>
+                                <p class="text-gray-300">Shibin El Kom, Menoufia<br>Open to remote work</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-heart text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Interests</h4>
+                                <p class="text-gray-300">Photography, Hiking<br>Open Source Contributor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-[var(--background)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">My <span class="text-[var(--primary)]">Skills</span></h2>
+            <div class="grid md:grid-cols-3 gap-8" id="skills-container">
+                <!-- Skills will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-[var(--card-bg)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">Featured <span class="text-[var(--primary)]">Projects</span></h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+            <div class="text-center mt-12 animate-fade-in delay-400">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-[var(--secondary)] text-[var(--secondary)] hover:bg-[var(--card-bg)] rounded-lg font-medium transition">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-[var(--background)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">Get In <span class="text-[var(--primary)]">Touch</span></h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="animate-fade-in delay-100">
+                    <h3 class="text-2xl font-semibold mb-6 text-[var(--secondary)]">Let's Talk About Your Project</h3>
+                    <p class="text-gray-300 mb-8">I'm currently available for freelance work or full-time positions. If you have a project that you want to get started, think you need my help with something, or just fancy saying hello, then get in touch.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Email</h4>
+                                <a href="mailto:amirtahrwat321@gmail.com" class="text-gray-300 hover:text-[var(--secondary)]">amirtahrwat321@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Phone</h4>
+                                <a href="tel:01276448414" class="text-gray-300 hover:text-[var(--secondary)]">01276448414</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-[var(--secondary)]">Location</h4>
+                                <p class="text-gray-300">Shibin El Kom, Menoufia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] p-3 rounded-full transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] p-3 rounded-full transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] p-3 rounded-full transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] p-3 rounded-full transition">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-fade-in delay-200">
+                    <div class="bg-[var(--card-bg)] p-6 rounded-xl shadow-md">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-[var(--background)] text-white focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-[var(--background)] text-white focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-[var(--background)] text-white focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-[var(--background)] text-white focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent"></textarea>
+                        </div>
+                        <button id="contact-submit" class="w-full bg-[var(--secondary)] hover:bg-[var(--accent)] text-[var(--background)] px-6 py-3 rounded-lg font-medium transition">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--card-bg)] text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p>&copy; 2025 Amir Tharwat. All rights reserved.</p>
+                </div>
+                <div class="flex justify-center md:justify-end space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-[var(--secondary)] transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[var(--secondary)] transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[var(--secondary)] transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[var(--secondary)] transition">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data for dynamic content
+        const data = {
+            skills: [
+                {
+                    category: "Technical Skills",
+                    icon: "fas fa-code",
+                    items: [
+                        { name: "C#", level: 95 },
+                        { name: "SQL", level: 90 },
+                        { name: "JavaScript", level: 85 },
+                        { name: "HTML/CSS", level: 98 }
+                    ]
+                },
+                {
+                    category: "Professional Skills",
+                    icon: "fas fa-chart-line",
+                    items: [
+                        { name: "Communication", level: 90 },
+                        { name: "Teamwork", level: 92 },
+                        { name: "Project Management", level: 88 },
+                        { name: "Creativity", level: 95 }
+                    ]
+                },
+                {
+                    category: "Tools & Technologies",
+                    icon: "fas fa-tools",
+                    items: ["Git", "VS", "AWS", "SQL", "Azure", "VS Code"]
+                }
+            ],
+            projects: [
+                {
+                    title: "L3bty",
+                    description: "A full-stack L3bty solution with C#, Html, CSS, JavaScript and sql. Features include product search, cart functionality, and secure payments.",
+                    technologies: ["C#", "Html","CSS","JavaScript" ,"sql"],
+                    gradient: "from-[var(--primary)] to-[var(--secondary)]",
+                    icon: "fas fa-project-diagram",
+                    github: "#",
+                    demo: "https://l3bty-exb0gefrhdeedsdr.spaincentral-01.azurewebsites.net"
+                },
+                {
+                    title: "Contests",
+                    description: "built with Html and CSS.",
+                    technologies: ["Html", "CSS"],
+                    gradient: "from-purple-400 to-pink-500",
+                    icon: "fas fa-chart-line",
+                    github: "#",
+                    demo: "https://amirmero1.github.io/-/"
+                }
+            ]
+        };
+
+        // Render skills dynamically
+        function renderSkills() {
+            const container = document.getElementById('skills-container');
+            container.innerHTML = data.skills.map((skill, index) => `
+                <div class="bg-[var(--card-bg)] p-6 rounded-xl shadow-md animate-fade-in delay-${100 * (index + 1)}">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-[var(--primary)] p-3 rounded-full mr-4">
+                            <i class="${skill.icon} text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-[var(--secondary)]">${skill.category}</h3>
+                    </div>
+                    <div class="space-y-4">
+                        ${skill.items.map(item => typeof item === 'string' ? `
+                            <span class="bg-gray-600 px-3 py-1 rounded-full text-sm">${item}</span>
+                        ` : `
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-300">${item.name}</span>
+                                    <span class="text-gray-300">${item.level}%</span>
+                                </div>
+                                <div class="w-full bg-gray-600 rounded-full h-2">
+                                    <div class="bg-[var(--secondary)] h-2 rounded-full" style="width: ${item.level}%"></div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render projects dynamically
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = data.projects.map((project, index) => `
+                <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition animate-fade-in delay-${100 * (index + 1)}">
+                    <div class="h-48 bg-gradient-to-r ${project.gradient} flex items-center justify-center">
+                        <i class="${project.icon} text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-[var(--secondary)]">${project.title}</h3>
+                        <p class="text-gray-300 mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.technologies.map(tech => `
+                                <span class="bg-[var(--primary)] text-white px-2 py-1 rounded text-xs">${tech}</span>
+                            `).join('')}
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="${project.github}" class="text-[var(--secondary)] hover:text-[var(--accent)]"><i class="fab fa-github"></i> Code</a>
+                            <a href="${project.demo}" class="text-[var(--secondary)] hover:text-[var(--accent)]"><i class="fas fa-external-link-alt"></i> ${project.title.includes('App') ? 'App Store' : 'Live Demo'}</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Add animation classes when scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            renderSkills();
+            renderProjects();
+            const animateElements = document.querySelectorAll('.animate-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animateElements.forEach(element => observer.observe(element));
+        });
+
+        // Handle form submission (basic example, replace with actual backend logic)
+        document.getElementById('contact-submit').addEventListener('click', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            console.log({ name, email, subject, message }); // Replace with actual form submission logic
+            alert('Message sent! (This is a demo, replace with actual backend integration)');
+        });
+    </script>
+</body>
+</html>
